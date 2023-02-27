@@ -4,6 +4,14 @@ import authMiddleware from "../../middleware/authMiddleware";
 
 const router = Express.Router();
 
+router.get("/hello", async (req, res, next) => {
+  try {
+    res.send("hi");
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.post("/registration", async (req, res, next) => {
   try {
     const token = await userService.registration(req.body);
